@@ -1,0 +1,37 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutEncryptionConfiguration",
+                "s3:PutBucketTagging",
+                "s3:CreateBucket",
+                "s3:PutBucketPolicy",
+                "s3:ListBucket",
+                "cloudformation:ValidateTemplate"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "cloudformation:DescribeStackEvents",
+                "cloudformation:CreateStack",
+                "cloudformation:TagResource",
+                "cloudformation:UpdateStack",
+                "cloudformation:DescribeStackResource",
+                "cloudformation:DescribeStacks",
+                "cloudformation:ListStackResources"
+            ],
+            "Resource": [
+                "arn:aws:s3:::*serverlessdeploymentbucket*/*",
+                "arn:aws:cloudformation:*:*:stack/*"
+            ]
+        }
+    ]
+}
