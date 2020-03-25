@@ -7,8 +7,8 @@
             "Action": [
                 "s3:PutEncryptionConfiguration",
                 "s3:PutBucketTagging",
-                "s3:CreateBucket",
                 "s3:PutBucketPolicy",
+                "s3:CreateBucket",
                 "s3:ListBucket",
                 "cloudformation:ValidateTemplate"
             ],
@@ -29,8 +29,9 @@
                 "cloudformation:ListStackResources"
             ],
             "Resource": [
-                "arn:aws:s3:::*serverlessdeploymentbucket*/*",
-                "arn:aws:cloudformation:*:*:stack/*"
+                "arn:aws:cloudformation:*:*:stack/*/*",
+                "arn:aws:cloudformation:*:*:stackset/*:*",
+                "arn:aws:s3:::*serverlessdeploymentbucket*/*"
             ]
         }
     ]
