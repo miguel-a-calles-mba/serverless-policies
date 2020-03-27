@@ -15,7 +15,7 @@
             "Sid": "VisualEditor1",
             "Effect": "Allow",
             "Action": "cloudformation:DeleteStack",
-            "Resource": "arn:aws:cloudformation:*:*:stack/*/*"
+            "Resource": "arn:aws:cloudformation:{{region}}:{{accountId}}:stack/*/*"
         }
     ]
 }
