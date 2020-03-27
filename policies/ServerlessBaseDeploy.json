@@ -29,8 +29,8 @@
                 "cloudformation:ListStackResources"
             ],
             "Resource": [
-                "arn:aws:cloudformation:*:*:stack/*/*",
-                "arn:aws:cloudformation:*:*:stackset/*:*",
+                "arn:aws:cloudformation:{{region}}:{{accountId}}:stack/*/*",
+                "arn:aws:cloudformation:{{region}}:{{accountId}}:stackset/*:*",
                 "arn:aws:s3:::*serverlessdeploymentbucket*/*"
             ]
         }
