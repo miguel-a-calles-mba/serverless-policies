@@ -2,18 +2,150 @@
 
 AWS IAM policies you can use for your Serverless Framework projects.
 
-## Changes you must make
+## Segmented policy files
 
-Please update the placholders in the JSON files with specific values for your account and region.
+The policies JSON are segmented to allow you to choose which IAM policies you want to use.
 
-- Replace `{{region}}` with your region (e.g., `us-east-1`).
-- Replace `{{accountId}}` with your AWS account identifier.
+At a minimum, you need all the SIDs in the ServerlessBase policy to deploy a `serverless.yml` file.
 
-You can choose to replace the placeholder with asterisks `*`, but the policies are no longer least privileged because it accepts all resources for the applicable ARN fields.
+You add more SIDs depending on what else you are adding to your deployment.
 
-Note: In some cases, the entire ARN is an asterisk. This is sometimes done when the IAM policy statement does not accept an ARN. In other cases, the IAM policy visual editor recommended specifying all resources.
+## Example
 
-## Serverless base
+Let's suppose you want to deploy a basic DynamoDB table using your `serverless.yml` file.
 
-The [ServerlessBaseDeploy.json](./policies/ServerlessBaseDeploy.json) are the minimum AWS IAM permissions you need to **deploy** an empty Serverless Framework stack.
-The [ServerlessBaseRemove.json](./policies/ServerlessBaseRemove.json) are the minimum AWS IAM permissions you need to **remove** an empty Serverless Framework stack.
+```yaml
+service: service-name
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${env:STAGE, opt:stage, 'dev'}
+  region: us-west-1
+
+resources:
+  Resources:
+    Table:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:service}-${self:provider.stage}-table
+        AttributeDefinitions:
+          - AttributeName: UniqueId
+            AttributeType: S
+          - AttributeName: SortItem
+            AttributeType: S
+        KeySchema:
+          - AttributeName: UniqueId
+            KeyType: HASH
+          - AttributeName: SortItem
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+```
+
+We use all the SIDs from the ServerlessBase policy and the base SID in the ServerlessDynamoDb policy.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Serverless Base - Part 1",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutEncryptionConfiguration",
+                "s3:PutBucketTagging",
+                "s3:PutBucketPolicy",
+                "s3:CreateBucket",
+                "s3:ListBucket",
+                "cloudformation:ValidateTemplate"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "Serverless Base - Part 2",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "cloudformation:DescribeStackEvents",
+                "cloudformation:CreateStack",
+                "cloudformation:TagResource",
+                "cloudformation:UpdateStack",
+                "cloudformation:DescribeStackResource",
+                "cloudformation:DescribeStacks",
+                "cloudformation:ListStackResources"
+            ],
+            "Resource": [
+                "arn:aws:cloudformation:{{region}}:{{accountId}}:stack/{{ServiceNameOrStackName}}*/*",
+                "arn:aws:cloudformation:{{region}}:{{accountId}}:stackset/{{ServiceNameOrStackName}}*:*",
+                "arn:aws:s3:::{{ServiceNameOrStackName}}*/*"
+            ]
+        },
+        {
+            "Sid": "DynamoDB Deploy - Base",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:CreateTable",
+                "dynamodb:DescribeTable",
+                "dynamodb:DescribeTimeToLive"
+            ],
+            "Resource": "arn:aws:dynamodb:{{region}}:{{accountId}}:table/{{tableName}}"
+        }
+    ]
+}
+```
+
+We replace the placeholders with the information from our `serverless.yml` file.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Serverless Base - Part 1",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutEncryptionConfiguration",
+                "s3:PutBucketTagging",
+                "s3:PutBucketPolicy",
+                "s3:CreateBucket",
+                "s3:ListBucket",
+                "cloudformation:ValidateTemplate"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "Serverless Base - Part 2",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "cloudformation:DescribeStackEvents",
+                "cloudformation:CreateStack",
+                "cloudformation:TagResource",
+                "cloudformation:UpdateStack",
+                "cloudformation:DescribeStackResource",
+                "cloudformation:DescribeStacks",
+                "cloudformation:ListStackResources"
+            ],
+            "Resource": [
+                "arn:aws:cloudformation:us-west-1:123456789012:stack/service-name*/*",
+                "arn:aws:cloudformation:us-west-1:123456789012:stackset/service-name*:*",
+                "arn:aws:s3:::service-name*/*"
+            ]
+        },
+        {
+            "Sid": "DynamoDB Deploy - Base",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:CreateTable",
+                "dynamodb:DescribeTable",
+                "dynamodb:DescribeTimeToLive"
+            ],
+            "Resource": "arn:aws:dynamodb:us-west-1:123456789012:table/service-name-dev-table"
+        }
+    ]
+}
+```

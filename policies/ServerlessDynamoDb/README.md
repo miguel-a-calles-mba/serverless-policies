@@ -1,6 +1,20 @@
 # ServerlessDynamoDb
 
-```
+Use the `ServerlessDynamoDBDeploy.json` file to add the appropriate IAM permissions when you deploy a DynamoDB table using the Serverless Framework.
+
+## Populate your stack information
+
+Update the policy by replacing the placeholders with your stack information.
+
+- Replace `{{region}}` with the desired region, e.g., `us-east-1`
+- Replace `{{accountId}}` with your AWS accound ID
+- Replace `{{tableName}}` with the table name defined in the `serverless.yml` file
+
+## Basic DynamoDB table
+
+Use the `DynamoDB Deploy - Base` SID to create a table with the following `serverless.yml` configuration.
+
+```yaml
 resources:
   Resources:
     Table:

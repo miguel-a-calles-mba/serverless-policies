@@ -2,7 +2,7 @@
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "VisualEditor0",
+            "Sid": "Serverless Base - Part 1",
             "Effect": "Allow",
             "Action": [
                 "s3:PutEncryptionConfiguration",
@@ -15,7 +15,7 @@
             "Resource": "*"
         },
         {
-            "Sid": "VisualEditor1",
+            "Sid": "Serverless Base - Part 2",
             "Effect": "Allow",
             "Action": [
                 "s3:PutObject",
@@ -29,9 +29,9 @@
                 "cloudformation:ListStackResources"
             ],
             "Resource": [
-                "arn:aws:cloudformation:{{region}}:{{accountId}}:stack/{{ServiceNameOrCustomStackName}}*/*",
-                "arn:aws:cloudformation:{{region}}:{{accountId}}:stackset/{{ServiceNameOrCustomStackName}}*:*",
-                "arn:aws:s3:::{{ServiceNameOrCustomStackName}}*/*"
+                "arn:aws:cloudformation:{{region}}:{{accountId}}:stack/{{ServiceNameOrStackName}}*/*",
+                "arn:aws:cloudformation:{{region}}:{{accountId}}:stackset/{{ServiceNameOrStackName}}*:*",
+                "arn:aws:s3:::{{ServiceNameOrStackName}}*/*"
             ]
         }
     ]
