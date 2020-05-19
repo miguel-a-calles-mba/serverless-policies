@@ -17,6 +17,15 @@
                 "sqs:SetQueueAttributes"
             ],
             "Resource": "arn:aws:sqs:{{region}}:{{accountId}}:{{queueName}}"
+        },
+        {
+            "Sid": "ServerlessSqsQueueTagsDeploy",
+            "Effect": "Allow",
+            "Action": [
+                "sqs:ListQueueTags",
+                "sqs:TagQueue"
+            ],
+            "Resource": "arn:aws:sqs:{{region}}:{{accountId}}:{{queueName}}"
         }
     ]
 }
