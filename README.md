@@ -44,7 +44,7 @@ resources:
           WriteCapacityUnits: 1
 ```
 
-We use all the SIDs from the ServerlessBase policy and the base SID in the ServerlessDynamoDb policy.
+We use all the SIDs from the ServerlessBase policy and the base SID in the DynamoDbDeploy policy.
 
 ```json
 {
