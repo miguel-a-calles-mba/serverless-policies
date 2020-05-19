@@ -12,7 +12,7 @@ Update the policy by replacing the placeholders with your stack information.
 
 ## Basic DynamoDB table
 
-Use the `ServerlessSqsBaseDeploy` SID to create a queue with the following `serverless.yml` configuration.
+Use the `ServerlessSqsQueueBaseDeploy` SID to create a queue with the following `serverless.yml` configuration.
 
 ```yaml
 resources:
