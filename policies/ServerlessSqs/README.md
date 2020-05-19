@@ -76,4 +76,6 @@ resources:
               Principal: "*"
               Action: SQS:SendMessage
               Resource: !Ref MySqsQueue
+        Queues: 
+          - !Ref MySqsQueue
 ```
