@@ -23,7 +23,8 @@
             "Effect": "Allow",
             "Action": [
                 "sqs:ListQueueTags",
-                "sqs:TagQueue"
+                "sqs:TagQueue",
+                "sqs:UntagQueue"
             ],
             "Resource": "arn:aws:sqs:{{region}}:{{accountId}}:{{queueName}}"
         }
