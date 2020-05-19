@@ -52,3 +52,24 @@ resources:
           - Key: keyname
             Value: keyvalue
 ```
+
+Add the `ServerlessSqsPolicyDeploy` SID to create a queue with the following `serverless.yml` configuration.
+
+```yaml
+resources:
+  Resources:
+    MySqsQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: queueName
+    M7SqsQueuePolicy:
+      Type: AWS::SQS::QueuePolicy
+      Properties: 
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Principal: "*"
+              Action: SQS:SendMessage
+              Resource: !Ref MySqsQueue
+```
