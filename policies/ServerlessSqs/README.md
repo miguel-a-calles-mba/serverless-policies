@@ -38,3 +38,17 @@ resources:
         ReceiveMessageWaitTimeSeconds: 0
         VisibilityTimeout: 30
 ```
+
+Add the `ServerlessSqsTagsDeploy` SID to create a queue with the following `serverless.yml` configuration.
+
+```yaml
+resources:
+  Resources:
+    MySqsQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: queueName
+        Tags:
+          - Key: keyname
+            Value: keyvalue
+```
