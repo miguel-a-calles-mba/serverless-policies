@@ -23,7 +23,7 @@ resources:
         QueueName: queueName
 ```
 
-Use the `ServerlessSqsPropertiesDeploy` SID to create a queue with the following `serverless.yml` configuration.
+Add the `ServerlessSqsPropertiesDeploy` SID to create a queue with the following `serverless.yml` configuration.
 
 ```yaml
 resources:
