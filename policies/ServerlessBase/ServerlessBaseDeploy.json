@@ -2,7 +2,7 @@
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "ServerlessBase1",
+            "Sid": "ServerlessBaseDeploy1",
             "Effect": "Allow",
             "Action": [
                 "s3:PutEncryptionConfiguration",
@@ -15,7 +15,7 @@
             "Resource": "*"
         },
         {
-            "Sid": "ServerlessBase2",
+            "Sid": "ServerlessBaseDeploy2",
             "Effect": "Allow",
             "Action": [
                 "s3:PutObject",
