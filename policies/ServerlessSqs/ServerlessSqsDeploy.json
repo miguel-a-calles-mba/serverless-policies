@@ -6,7 +6,8 @@
             "Effect": "Allow",
             "Action": [
                 "sqs:CreateQueue",
-                "sqs:GetQueueAttributes"
+                "sqs:GetQueueAttributes",
+                "sqs:SetQueueAttributes"
             ],
             "Resource": "arn:aws:sqs:{{region}}:{{accountId}}:{{queueName}}"
         }
