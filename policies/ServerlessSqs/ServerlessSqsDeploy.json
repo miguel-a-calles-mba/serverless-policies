@@ -6,7 +6,14 @@
             "Effect": "Allow",
             "Action": [
                 "sqs:CreateQueue",
-                "sqs:GetQueueAttributes",
+                "sqs:GetQueueAttributes"
+            ],
+            "Resource": "arn:aws:sqs:{{region}}:{{accountId}}:{{queueName}}"
+        },
+        {
+            "Sid": "ServerlessSqsQueuePropertiesDeploy",
+            "Effect": "Allow",
+            "Action": [
                 "sqs:SetQueueAttributes"
             ],
             "Resource": "arn:aws:sqs:{{region}}:{{accountId}}:{{queueName}}"
