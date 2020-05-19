@@ -10,7 +10,7 @@ Update the policy by replacing the placeholders with your stack information.
 - Replace `{{accountId}}` with your AWS accound ID
 - Replace `{{queueName}}` with the queue name defined in the `serverless.yml` file
 
-## Basic DynamoDB table
+## Basic SQS Queue
 
 Use the `ServerlessSqsQueueBaseDeploy` SID to create a queue with the following `serverless.yml` configuration.
 
@@ -22,6 +22,8 @@ resources:
       Properties:
         QueueName: queueName
 ```
+
+## SQS Queue with Additional Properties
 
 Add the `ServerlessSqsQueuePropertiesDeploy` SID to create a queue with the following `serverless.yml` configuration.
 
@@ -53,6 +55,8 @@ resources:
             Value: keyvalue
 ```
 
+## SQS Queue with a Queue Policy
+
 Add the `ServerlessSqsQueuePolicyDeploy` SID to create a queue with the following `serverless.yml` configuration.
 
 ```yaml
@@ -62,7 +66,7 @@ resources:
       Type: AWS::SQS::Queue
       Properties:
         QueueName: queueName
-    M7SqsQueuePolicy:
+    MySqsQueuePolicy:
       Type: AWS::SQS::QueuePolicy
       Properties: 
         PolicyDocument:
