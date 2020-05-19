@@ -27,6 +27,14 @@
                 "sqs:UntagQueue"
             ],
             "Resource": "arn:aws:sqs:{{region}}:{{accountId}}:{{queueName}}"
+        },
+        {
+            "Sid": "ServerlessSqsQueuePolicyDeploy",
+            "Effect": "Allow",
+            "Action": [
+                "sqs:CreateQueue"
+            ],
+            "Resource": "arn:aws:sqs:{{region}}:{{accountId}}:{{queueName}}"
         }
     ]
 }
