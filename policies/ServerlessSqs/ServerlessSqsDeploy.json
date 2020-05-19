@@ -1,0 +1,40 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ServerlessSqsQueueBaseDeploy",
+            "Effect": "Allow",
+            "Action": [
+                "sqs:CreateQueue",
+                "sqs:GetQueueAttributes"
+            ],
+            "Resource": "arn:aws:sqs:{{region}}:{{accountId}}:{{queueName}}"
+        },
+        {
+            "Sid": "ServerlessSqsQueuePropertiesDeploy",
+            "Effect": "Allow",
+            "Action": [
+                "sqs:SetQueueAttributes"
+            ],
+            "Resource": "arn:aws:sqs:{{region}}:{{accountId}}:{{queueName}}"
+        },
+        {
+            "Sid": "ServerlessSqsQueueTagsDeploy",
+            "Effect": "Allow",
+            "Action": [
+                "sqs:ListQueueTags",
+                "sqs:TagQueue",
+                "sqs:UntagQueue"
+            ],
+            "Resource": "arn:aws:sqs:{{region}}:{{accountId}}:{{queueName}}"
+        },
+        {
+            "Sid": "ServerlessSqsQueuePolicyDeploy",
+            "Effect": "Allow",
+            "Action": [
+                "sqs:CreateQueue"
+            ],
+            "Resource": "arn:aws:sqs:{{region}}:{{accountId}}:{{queueName}}"
+        }
+    ]
+}
