@@ -1,0 +1,14 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ServerlessSqsBaseDeploy",
+            "Effect": "Allow",
+            "Action": [
+                "sqs:CreateQueue",
+                "sqs:GetQueueAttributes"
+            ],
+            "Resource": "arn:aws:sqs:{{region}}:{{accountId}}:{{queueName}}"
+        }
+    ]
+}
