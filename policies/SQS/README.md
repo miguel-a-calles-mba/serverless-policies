@@ -1,4 +1,4 @@
-# ServerlessSqs
+# SQS
 
 Use the `SqsDeploy.json` file to add the appropriate IAM permissions when you deploy an SQS queue using the Serverless Framework.
 

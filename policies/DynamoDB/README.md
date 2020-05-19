@@ -1,4 +1,4 @@
-# ServerlessDynamoDb
+# DynamoDB
 
 Use the `ServerlessDynamoDBDeploy.json` file to add the appropriate IAM permissions when you deploy a DynamoDB table using the Serverless Framework.
 
