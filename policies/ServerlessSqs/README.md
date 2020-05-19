@@ -12,7 +12,7 @@ Update the policy by replacing the placeholders with your stack information.
 
 ## Basic DynamoDB table
 
-Use the `ServerlessSqsBaseDeploy` SID to create a table with the following `serverless.yml` configuration.
+Use the `ServerlessSqsBaseDeploy` SID to create a queue with the following `serverless.yml` configuration.
 
 ```yaml
 resources:
@@ -21,4 +21,20 @@ resources:
       Type: AWS::SQS::Queue
       Properties:
         QueueName: queueName
+```
+
+Use the `ServerlessSqsPropertiesDeploy` SID to create a queue with the following `serverless.yml` configuration.
+
+```yaml
+resources:
+  Resources:
+    MySqsQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: queueName
+        DelaySeconds: 0
+        MaximumMessageSize: 262144
+        MessageRetentionPeriod: 345600
+        ReceiveMessageWaitTimeSeconds: 0
+        VisibilityTimeout: 30
 ```
