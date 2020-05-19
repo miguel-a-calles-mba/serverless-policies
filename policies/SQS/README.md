@@ -1,6 +1,6 @@
-# ServerlessSqs
+# SQS
 
-Use the `ServerlessSqsDeploy.json` file to add the appropriate IAM permissions when you deploy an SQS queue using the Serverless Framework.
+Use the `SqsDeploy.json` file to add the appropriate IAM permissions when you deploy an SQS queue using the Serverless Framework.
 
 ## Populate your stack information
 
@@ -12,7 +12,7 @@ Update the policy by replacing the placeholders with your stack information.
 
 ## Basic SQS Queue
 
-Use the `ServerlessSqsQueueBaseDeploy` SID to create a queue with the following `serverless.yml` configuration.
+Use the `SqsQueueBaseDeploy` SID to create a queue with the following `serverless.yml` configuration.
 
 ```yaml
 resources:
@@ -25,7 +25,7 @@ resources:
 
 ## SQS Queue with Additional Properties
 
-Add the `ServerlessSqsQueuePropertiesDeploy` SID to create a queue with the following `serverless.yml` configuration.
+Add the `SqsQueuePropertiesDeploy` SID to create a queue with the following `serverless.yml` configuration.
 
 ```yaml
 resources:
@@ -41,7 +41,7 @@ resources:
         VisibilityTimeout: 30
 ```
 
-Add the `ServerlessSqsQueueTagsDeploy` SID to create a queue with the following `serverless.yml` configuration.
+Add the `SqsQueueTagsDeploy` SID to create a queue with the following `serverless.yml` configuration.
 
 ```yaml
 resources:
@@ -57,7 +57,7 @@ resources:
 
 ## SQS Queue with a Queue Policy
 
-Add the `ServerlessSqsQueuePolicyDeploy` SID to create a queue with the following `serverless.yml` configuration.
+Add the `SqsQueuePolicyDeploy` SID to create a queue with the following `serverless.yml` configuration.
 
 ```yaml
 resources:
