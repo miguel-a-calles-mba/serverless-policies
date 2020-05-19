@@ -23,7 +23,7 @@ resources:
         QueueName: queueName
 ```
 
-Add the `ServerlessSqsPropertiesDeploy` SID to create a queue with the following `serverless.yml` configuration.
+Add the `ServerlessSqsQueuePropertiesDeploy` SID to create a queue with the following `serverless.yml` configuration.
 
 ```yaml
 resources:
@@ -39,7 +39,7 @@ resources:
         VisibilityTimeout: 30
 ```
 
-Add the `ServerlessSqsTagsDeploy` SID to create a queue with the following `serverless.yml` configuration.
+Add the `ServerlessSqsQueueTagsDeploy` SID to create a queue with the following `serverless.yml` configuration.
 
 ```yaml
 resources:
@@ -53,7 +53,7 @@ resources:
             Value: keyvalue
 ```
 
-Add the `ServerlessSqsPolicyDeploy` SID to create a queue with the following `serverless.yml` configuration.
+Add the `ServerlessSqsQueuePolicyDeploy` SID to create a queue with the following `serverless.yml` configuration.
 
 ```yaml
 resources:
