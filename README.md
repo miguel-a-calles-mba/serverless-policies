@@ -51,7 +51,7 @@ We use all the SIDs from the ServerlessBase policy and the base SID in the Serve
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "Serverless Base - Part 1",
+            "Sid": "ServerlessBaseDeploy1",
             "Effect": "Allow",
             "Action": [
                 "s3:PutEncryptionConfiguration",
@@ -64,7 +64,7 @@ We use all the SIDs from the ServerlessBase policy and the base SID in the Serve
             "Resource": "*"
         },
         {
-            "Sid": "Serverless Base - Part 2",
+            "Sid": "ServerlessBaseDeploy2",
             "Effect": "Allow",
             "Action": [
                 "s3:PutObject",
@@ -84,7 +84,7 @@ We use all the SIDs from the ServerlessBase policy and the base SID in the Serve
             ]
         },
         {
-            "Sid": "DynamoDB Deploy - Base",
+            "Sid": "DynamoDbBaseDeploy",
             "Effect": "Allow",
             "Action": [
                 "dynamodb:CreateTable",
@@ -104,7 +104,7 @@ We replace the placeholders with the information from our `serverless.yml` file.
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "Serverless Base - Part 1",
+            "Sid": "ServerlessBaseDeploy1",
             "Effect": "Allow",
             "Action": [
                 "s3:PutEncryptionConfiguration",
@@ -117,7 +117,7 @@ We replace the placeholders with the information from our `serverless.yml` file.
             "Resource": "*"
         },
         {
-            "Sid": "Serverless Base - Part 2",
+            "Sid": "ServerlessBaseDeploy2",
             "Effect": "Allow",
             "Action": [
                 "s3:PutObject",
@@ -137,7 +137,7 @@ We replace the placeholders with the information from our `serverless.yml` file.
             ]
         },
         {
-            "Sid": "DynamoDB Deploy - Base",
+            "Sid": "DynamoDbBaseDeploy",
             "Effect": "Allow",
             "Action": [
                 "dynamodb:CreateTable",
