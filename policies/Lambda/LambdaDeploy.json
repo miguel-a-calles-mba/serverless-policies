@@ -17,7 +17,7 @@
             ]
         },
         {
-            "Sid": "Lambda{{functionName}}",
+            "Sid": "LambdaBase{{functionName}}",
             "Effect": "Allow",
             "Action": [
                 "logs:CreateLogGroup",
