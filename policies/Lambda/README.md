@@ -14,7 +14,7 @@ Update the policy by replacing the placeholders with your stack information.
 
 ## Basic Lambda Function
 
-Use the `LambdaBase` SID and one `Lambda{{functionName}}` SID per function to create a Lambda function with the following `serverless.yml` configuration.
+Use the `LambdaBase` SID and one `LambdaBase{{functionName}}` SID per function to create a Lambda function with the following `serverless.yml` configuration.
 
 ```yaml
 functions:
