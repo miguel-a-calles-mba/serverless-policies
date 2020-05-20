@@ -24,7 +24,8 @@
                 "lambda:GetFunction",
                 "lambda:CreateFunction",
                 "lambda:ListVersionsByFunction",
-                "lambda:PublishVersion"
+                "lambda:PublishVersion",
+                "lambda:UpdateFunctionCode"
             ],
             "Resource": [
                 "arn:aws:logs:{{region}}:{{accountId}}:log-group:/aws/lambda/{{stackName}}-{{stage}}-{{functionName}}:log-stream:",
