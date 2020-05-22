@@ -2,20 +2,16 @@
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "ServerlessBaseDeploy1",
+            "Sid": "ServerlessFrameworkDeploy1",
             "Effect": "Allow",
             "Action": [
-                "s3:PutEncryptionConfiguration",
-                "s3:PutBucketTagging",
-                "s3:PutBucketPolicy",
-                "s3:CreateBucket",
                 "s3:ListBucket",
                 "cloudformation:ValidateTemplate"
             ],
             "Resource": "*"
         },
         {
-            "Sid": "ServerlessBaseDeploy2",
+            "Sid": "ServerlessFrameworkDeploy2",
             "Effect": "Allow",
             "Action": [
                 "s3:PutObject",
@@ -26,12 +22,14 @@
                 "cloudformation:UpdateStack",
                 "cloudformation:DescribeStackResource",
                 "cloudformation:DescribeStacks",
-                "cloudformation:ListStackResources"
+                "cloudformation:ListStackResources",
+                "apigateway:GET"
             ],
             "Resource": [
-                "arn:aws:cloudformation:{{region}}:{{accountId}}:stack/{{ServiceNameOrStackName}}*/*",
-                "arn:aws:cloudformation:{{region}}:{{accountId}}:stackset/{{ServiceNameOrStackName}}*:*",
-                "arn:aws:s3:::{{ServiceNameOrStackName}}*/*"
+                "arn:aws:cloudformation:{{region}}:{{accountId}}:stack/{{stackName}}/*",
+                "arn:aws:cloudformation:{{region}}:{{accountId}}:stackset/{{stackName}}:*",
+                "arn:aws:s3:::{{stackName}}*",
+                "arn:aws:apigateway:{{region}}::/restapis"
             ]
         }
     ]
