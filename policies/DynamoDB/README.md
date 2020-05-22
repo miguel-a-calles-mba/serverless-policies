@@ -12,7 +12,7 @@ Update the policy by replacing the placeholders with your stack information.
 
 ## Basic DynamoDB table
 
-Use the `DynamoDbBaseDeploy` SID to create a table with the following `serverless.yml` configuration.
+Use the `DynamoDbDeploy` SID to create a table with the following `serverless.yml` configuration.
 
 ```yaml
 resources:

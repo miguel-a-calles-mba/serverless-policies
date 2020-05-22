@@ -2,7 +2,7 @@
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "LambdaBase",
+            "Sid": "LambdaDeploy",
             "Effect": "Allow",
             "Action": [
                 "logs:DescribeLogGroups",
@@ -17,7 +17,7 @@
             ]
         },
         {
-            "Sid": "LambdaBase{{functionName}}",
+            "Sid": "LambdaDeploy{{functionName}}",
             "Effect": "Allow",
             "Action": [
                 "logs:CreateLogGroup",

@@ -10,13 +10,14 @@ Update the policy by replacing the placeholders with your stack information.
 - Replace `{{accountId}}` with your AWS accound ID, e.g. `123456789012`.
 - Replace `{{serviceName}}` with your service name, e.g. `myServiceName`.
 - Replace `{{stage}}` with the stage, e.g., `dev`.
+- Replace `{{cfRoleName}}` with the CloudFormation role name.
 - Replace `{{stackName}}` with either:
   - The automatically generated stack name `{{serviceName}}-{{stage}}`.
   - The `stackName` property value, e.g., `myStackName`.
 
 ## Using a CloudFormation role
 
-We will need two IAM polices to deploy the following `serverless.yml` configuration.
+We will need multiple IAM items to deploy the following `serverless.yml` configuration.
 
 ```yaml
 service: myServiceName
@@ -27,20 +28,44 @@ provider:
   stage: ${env:STAGE, opt:stage, 'dev'}
   region: us-east-1
 #  stackName: myStackName
-  cfnRole: arn:aws:iam::123456789012:role/my-cfn-role
+  cfnRole: arn:aws:iam::123456789012:role/cfRoleName
 ```
 
-We will need an IAM policy that the `my-cfn-role` uses. Use the `CloudFormationDeploy.json` policy.
+We will need the following IAM items to create the `cfRoleName` CloudFormation role:
 
-We will need an IAM policy for the IAM user that performs the deploy. Use the `ServerlessFrameworkDeploy.json` file.
+- `cfRoleName` IAM policy based on the `CloudFormationDeploy.json` file.
+- `cfRoleName` IAM role that uses the `cfRoleName` IAM policy.
 
-To illustrate the IAM relationships:
+We will need the following IAM items to deploy via the Serverless Framework:
 
-- The `my-cfn-role` uses the `my-cfn-policy` created with the `CloudFormationDeploy.json` file.
-- The IAM users uses the `my-serverless-policy` policy (or is part of an IAM group that uses that policy). The `my-serverless-policy` was created with the `ServerlessFrameworkDeploy.json` file.
+- An IAM policy based on the SIDs from both the `ServerlessFrameworkDeploy.json` and `AssumeCloudFormationRole.json` files.
+- (Optional) An IAM group that uses the IAM policy.
+- An IAM user that users the IAM policy (or is part of the IAM group).
 
 ## Regular Serverless Framework deploys
 
 We will need one IAM policy to deploy the `serverless.yml` configuration above without the `cfnRole` property.
 
 We will use the SIDs from both the `ServerlessFrameworkDeploy.json` and `CloudFormationDeploy.json` file to create the IAM policy.
+
+The IAM policy will look like:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ServerlessFrameworkDeploy1",
+            ...
+        },
+        {
+            "Sid": "ServerlessFrameworkDeploy2",
+            ...
+        },
+        {
+            "Sid": "CloudFormationDeploy",
+            ...
+        }
+    ]
+}
+```
