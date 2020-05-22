@@ -1,0 +1,36 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "LambdaBase",
+            "Effect": "Allow",
+            "Action": [
+                "logs:DescribeLogGroups",
+                "iam:GetRole",
+                "iam:CreateRole",
+                "iam:PutRolePolicy",
+                "iam:PassRole"
+            ],
+            "Resource": [
+                "arn:aws:logs:{{region}}:{{accountId}}:log-group::log-stream:",
+                "arn:aws:iam::{{accountId}}:role/{{stackName}}-{{stage}}-{{region}}-lambdaRole"
+            ]
+        },
+        {
+            "Sid": "LambdaBase{{functionName}}",
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "lambda:GetFunction",
+                "lambda:CreateFunction",
+                "lambda:ListVersionsByFunction",
+                "lambda:PublishVersion",
+                "lambda:UpdateFunctionCode"
+            ],
+            "Resource": [
+                "arn:aws:logs:{{region}}:{{accountId}}:log-group:/aws/lambda/{{stackName}}-{{stage}}-{{functionName}}:log-stream:",
+                "arn:aws:lambda:{{region}}:{{accountId}}:function:{{stackName}}-{{stage}}-{{functionName}}"
+            ]
+        }
+    ]
+}
