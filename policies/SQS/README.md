@@ -12,7 +12,7 @@ Update the policy by replacing the placeholders with your stack information.
 
 ## Basic SQS Queue
 
-Use the `SqsQueueBaseDeploy` SID to create a queue with the following `serverless.yml` configuration.
+Use the `SqsQueueDeploy` SID to create a queue with the following `serverless.yml` configuration.
 
 ```yaml
 resources:

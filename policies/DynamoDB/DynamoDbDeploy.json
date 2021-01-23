@@ -2,7 +2,7 @@
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "DynamoDbBaseDeploy",
+            "Sid": "DynamoDbDeploy",
             "Effect": "Allow",
             "Action": [
                 "dynamodb:CreateTable",

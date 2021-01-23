@@ -1,0 +1,18 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "CloudFormationDeploy",
+            "Effect": "Allow",
+            "Action": [
+                "s3:CreateBucket",
+                "s3:PutEncryptionConfiguration",
+                "s3:PutBucketTagging",
+                "s3:PutBucketPolicy"
+            ],
+            "Resource": [
+                "arn:aws:s3:::{{stackName}}*"
+            ]
+        }
+    ]
+}
